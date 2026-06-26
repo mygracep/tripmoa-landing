@@ -21,7 +21,7 @@ export default function MyPage() {
     <main className={styles.screen}>
       {/* 헤더 */}
       <div className={styles.header}>
-        <h1 className={styles.headerTitle}>마이</h1>
+        <h1 className={styles.headerTitle}>My Page</h1>
       </div>
 
       {/* 프로필 영역 */}
@@ -34,10 +34,10 @@ export default function MyPage() {
           </svg>
         </div>
         <div className={styles.profileInfo}>
-          <p className={styles.profileName}>OOO님</p>
+          <p className={styles.profileName}>지수님</p>
           <p className={styles.profileSub}>로그인하고 더 많은 기능을 이용해보세요</p>
         </div>
-        <button className={styles.loginChip}>로그인</button>
+        <button className={styles.loginChip}>로그아웃</button>
       </div>
 
       {/* 진행중인 여행 */}

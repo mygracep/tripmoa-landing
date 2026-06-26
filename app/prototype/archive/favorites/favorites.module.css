@@ -3,7 +3,7 @@
 .screen {
   min-height: 100dvh;
   background: #f7f8fa;
-  max-width: 480px;
+  max-width: 767px;
   margin: 0 auto;
   padding: 0 20px;
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;

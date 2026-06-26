@@ -57,7 +57,7 @@ const TABS = [
   { label: '홈', Icon: IconHome, path: '/prototype/home' },
   { label: '탐색', Icon: IconExplore, path: '/prototype/explore' },
   { label: '아카이브', Icon: IconArchive, path: '/prototype/archive' },
-  { label: '마이', Icon: IconMy, path: '/prototype/mypage' },
+  { label: 'My', Icon: IconMy, path: '/prototype/mypage' },
 ] as const;
 
 export default function BottomNav() {

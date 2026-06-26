@@ -66,6 +66,18 @@ export default function MapView({ locations = [], activeDay = null, onMarkerClic
         <MarkerF
           key={`${loc.name}-${idx}`}
           position={{ lat: loc.lat, lng: loc.lng }}
+          // 기본 흰 배경 핀 대신 작은 검은 원 SVG로 — 숫자만 깔끔하게 보이도록
+          icon={{
+            url:
+              'data:image/svg+xml;charset=UTF-8,' +
+              encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+                  <circle cx="13" cy="13" r="12" fill="#1f2329" stroke="#ffffff" stroke-width="2"/>
+                </svg>
+              `),
+            scaledSize: new window.google.maps.Size(26, 26),
+            anchor: new window.google.maps.Point(13, 13),
+          }}
           label={{
             text: String(idx + 1),
             color: "#fff",

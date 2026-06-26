@@ -4,7 +4,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  max-width: 480px;
+  max-width: 767px;
   margin: 0 auto;
   display: flex;
   background: #ffffff;
@@ -39,4 +39,16 @@
   font-weight: 600;
   letter-spacing: -0.2px;
   line-height: 1;
+}
+
+/* ── 480px 이하 (좁은 모바일): 탭 여백/폰트 축소 ── */
+@media (max-width: 480px) {
+  .tab {
+    padding: 8px 0 6px;
+    gap: 2px;
+  }
+
+  .tabLabel {
+    font-size: 10px;
+  }
 }

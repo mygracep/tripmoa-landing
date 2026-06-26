@@ -26,22 +26,24 @@ export default function HomePage() {
     setCity((prev) => (prev === c ? null : c));
   }
 
-  return (
-    <main className={styles.screen}>
-      {/* 로고 */}
-      <div className={styles.logoWrap}>
-        {/* 마스코트는 public/logo.png 에 넣어주세요. 없으면 자동 숨김 */}
-        <img
-          src="/moaLogo.svg"
-          alt="트립모아"
-          className={styles.logoImg}
-          onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-        />
-        <div className={styles.wordmark}>
-          <span className={styles.wordmarkTrip}>Trip</span>
-          <span className={styles.wordmarkMoa}>MOA</span>
-        </div>
+return (
+  <main className={styles.screen}>
+    {/* 배경 장식: 비행기 + 구름 */}
+    <img src="/sky-deco.png" alt="" className={styles.skyDeco} />
+
+    {/* 로고 */}
+    <div className={styles.logoWrap}>
+      <img
+        src="/moaLogo.png"
+        alt="트립모아"
+        className={styles.logoImg}
+        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+      />
+      <div className={styles.wordmark}>
+        <span className={styles.wordmarkTrip}>Trip</span>
+        <span className={styles.wordmarkMoa}>MOA</span>
       </div>
+    </div>
 
       {/* 헤드라인 */}
       <h1 className={styles.headline}>
