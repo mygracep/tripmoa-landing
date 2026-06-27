@@ -1,0 +1,174 @@
+/* ── 트립모아 홈화면 (home.png 새 디자인 반영) ── */
+/* 컬러는 목업 + 너희 컬러 시스템 기준: MOA cyan #64D4F5 */
+
+.screen {
+  min-height: 100dvh;
+  background: linear-gradient(180deg, #B1E9FA 0%, rgba(216, 244, 253, 0.7) 15%, #FFFFFF 49%);
+  max-width: 767px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.bottomPad { height: 80px; }
+
+/* 비행기 + 구름 일러스트 (배경 장식) */
+.skyDeco {
+  position: absolute;
+  top: 150px;
+  right: -40px;
+  width: 220px;
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 로고 영역 (상단) */
+.logoWrap {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  z-index: 2;
+}
+.logoImg {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  margin-left: -250px;
+  margin-bottom: -10px;
+}
+.wordmark {
+  font-family: var(--font-mungyeong), 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.wordmarkTrip { color: #4a4a4a; }
+.wordmarkMoa { color: #64d4f5; margin-left: 8px; }
+
+/* 헤드라인 (중앙) */
+.headline {
+  margin-top: 80px;
+  text-align: center;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 32px;
+  line-height: normal;
+  letter-spacing: -0.64px;
+  font-weight: 500;        /* "내 여행에 맞는 / 를 검색해보세요" */
+  color: #5B5353;
+  position: relative;
+  z-index: 1;
+}
+.headlineLine2 {
+  font-weight: 400;        /* 세 번째 span */
+  color: #5B5353;
+}
+.headlineStrong {
+  font-weight: 700;        /* "실후기" 강조 */
+  color: #5B5353;
+}
+.headlineLine2 { color: #5a6068; }
+.headlineStrong { color: #383c42; font-weight: 800; }
+
+/* 아래로 밀어내는 스페이서 */
+.spacer { flex: 1 1 auto; min-height: 40px; }
+
+/* 도시 칩 — 채워진 회색 배경 스타일로 변경 */
+.chips {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: nowrap;
+  position: relative;
+  z-index: 1;
+  padding: 0 50px;    /* 추가: 칩 묶음 좌우 여백 */
+}
+.chip {
+  border: none;
+  background: #F8F8F8;
+  color: #5B5353;
+  font-size: clamp(12px, 3.2vw, 17px);   /* 13px → 12px 최소값 낮춤 */
+  font-weight: 700;
+  padding: 11px 10px;                     /* 좌우 패딩 더 축소 */
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  font-family: inherit;
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: nowrap;        /* 핵심: 줄바꿈 강제 금지 */
+  overflow: hidden;
+  text-align: center;
+  outline: none;
+  -webkit-tab-highlight-color: transparent;
+}
+.chip:hover { background: #e4e6e9; }
+.chip:active { background: #d6d9dd; }
+.chipActive {
+  background: #64d4f5;
+  color: #ffffff;
+}
+
+/* ── 하단 고정 검색바 ── */
+.searchBarWrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 767px;
+  margin: 0 auto;
+  padding: 12px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(to top, rgba(255,255,255,1) 40%, rgba(255,255,255,0));
+  z-index: 99;
+  box-sizing: border-box;
+}
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 9px 8px 9px 16px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 100%;
+}
+.searchIcon {
+  flex-shrink: 0;
+  color: #9aa0a6;
+}
+.searchInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #1f2937;
+  background: transparent;
+  font-family: inherit;
+}
+.searchInput::placeholder { color: #9aa0a6; }
+.submitBtn {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #87DFFF 0%, #28c5f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.15s;
+}
+.submitBtn:active { transform: scale(0.92); }
+.submitBtn:disabled { opacity: 0.4; cursor: default; }
