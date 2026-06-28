@@ -75,8 +75,8 @@ export default function RecentViewsPage() {
                     </div>
                   )}
                 </div>
-                <p className={styles.title}>{item.title}</p>
                 <p className={styles.date}>{formatDate(item.viewedAt)}</p>
+                <p className={styles.title}>{item.title}</p>
               </button>
             </div>
           ))}

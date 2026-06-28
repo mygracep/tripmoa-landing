@@ -18,14 +18,17 @@ const DUMMY_TRIP = {
 
 // 내 탐색 취향 칩 — 수정 기능 미구현(인증/저장 API 없음), 더미 표시용
 const TRAVEL_TAGS = ['오사카', '20대', '친구와', '3명이서', '핫플', '가성비'];
+const CITY_TAGS = ['오사카', '시즈오카', '마쓰야마']; // 도시 키워드는 강조 색상으로 표시
 
 const MENU_ITEMS = [
   {
     label: '공지사항',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 11l18-5v12L3 14v-3z" />
-        <path d="M11 16l1 5h2l-1-5" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="9" width="6" height="6" rx="1" />
+        <path d="M8 9L17 4V20L8 15Z" />
+        <path d="M11 15V20" />
+        <path d="M19.5 9C20.8 9 21.5 10.3 21.5 12C21.5 13.7 20.8 15 19.5 15" />
       </svg>
     ),
   },
@@ -106,9 +109,9 @@ export default function MyPage() {
             <div className={styles.tripTitleRow}>
               <p className={styles.tripTitle}>{DUMMY_TRIP.title}</p>
               <p className={styles.tripDate}>마지막 수정 {DUMMY_TRIP.lastEdited}</p>
-              <div className={styles.progressBarTrack}>
-                <div className={styles.progressBarFill} style={{ width: `${DUMMY_TRIP.progress}%` }} />
-              </div>
+            </div>
+            <div className={styles.progressBarTrack}>
+              <div className={styles.progressBarFill} style={{ width: `${DUMMY_TRIP.progress}%` }} />
             </div>
 
             <div className={styles.tripChatBubble}>
@@ -212,7 +215,12 @@ export default function MyPage() {
           <p className={styles.exploreLabel}>나의 여행 취향</p>
           <div className={styles.chipsWrap}>
             {TRAVEL_TAGS.map((tag) => (
-              <span key={tag} className={styles.chip}>{tag}</span>
+              <span
+                key={tag}
+                className={CITY_TAGS.includes(tag) ? `${styles.chip} ${styles.chipAccent}` : styles.chip}
+              >
+                {tag}
+              </span>
             ))}
           </div>
         </div>
