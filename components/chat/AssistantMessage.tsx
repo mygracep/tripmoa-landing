@@ -130,6 +130,7 @@ export default function AssistantMessage({
                   content={result.summary}
                   onRefClick={onRefClick}
                   onDone={() => setSummaryDone(true)}
+                  speed={Math.max(18, Math.min(45, 900 / Math.max(result.summary.length, 1)))}
                 />
               )}
             </p>
