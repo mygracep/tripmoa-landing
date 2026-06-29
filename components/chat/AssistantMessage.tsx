@@ -118,7 +118,6 @@ export default function AssistantMessage({
           <AIAnalysisCard
             reviewCount={sources.length}
             placeCount={places.length}
-            genTime={genTime}
           />
 
           {result.summary && (
