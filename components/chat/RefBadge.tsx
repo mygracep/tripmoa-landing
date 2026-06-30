@@ -16,7 +16,7 @@ export default function RefBadge({ id, onClick }: Props) {
   const [pinned, setPinned] = useState(false);
   const wrapRef = useRef<HTMLSpanElement>(null);
 
-  const showTooltip = !!source && (pinned || hovered);
+  const showTooltip = pinned || hovered;
 
   useEffect(() => {
     if (!pinned) return;
@@ -64,20 +64,20 @@ export default function RefBadge({ id, onClick }: Props) {
         aria-label={
           source
             ? `${formatSourceChannel(source.channel)}: ${displaySourceTitle(source)}`
-            : `출처 ${id}번 보기`
+            : `?? ${id}? ??`
         }
         aria-expanded={pinned}
         aria-describedby={showTooltip ? `ref-tooltip-${id}` : undefined}
       >
-        🔗{id}
+        ??{id}
       </button>
 
-      {source && (
+      {showTooltip && (
         <span
           id={`ref-tooltip-${id}`}
           role="button"
           tabIndex={pinned ? 0 : -1}
-          className={`${styles.refTooltip} ${showTooltip ? styles.refTooltipVisible : ''}`}
+          className={`${styles.refTooltip} ${styles.refTooltipVisible}`}
           onClick={handleTooltipClick}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -88,24 +88,33 @@ export default function RefBadge({ id, onClick }: Props) {
             }
           }}
         >
-          <span className={styles.refTooltipChannel}>
-            {formatSourceChannel(source.channel)}
-          </span>
-          <span className={styles.refTooltipTitle}>
-            {truncateSourceTitle(displaySourceTitle(source))}
-          </span>
-          {(source.date || source.is_ad) && (
-            <span className={styles.refTooltipMeta}>
-              {source.date && (
-                <span className={styles.refTooltipDate}>{source.date}</span>
+          {source ? (
+            <>
+              <span className={styles.refTooltipChannel}>
+                {formatSourceChannel(source.channel)}
+              </span>
+              <span className={styles.refTooltipTitle}>
+                {truncateSourceTitle(displaySourceTitle(source))}
+              </span>
+              {(source.date || source.is_ad) && (
+                <span className={styles.refTooltipMeta}>
+                  {source.date && (
+                    <span className={styles.refTooltipDate}>{source.date}</span>
+                  )}
+                  {source.is_ad && (
+                    <span className={styles.refBadgeLabel}>??</span>
+                  )}
+                </span>
               )}
-              {source.is_ad && (
-                <span className={styles.refBadgeLabel}>협찬</span>
+              {pinned && (
+                <span className={styles.refTooltipHint}>??? ?? ??? ??</span>
               )}
-            </span>
-          )}
-          {pinned && (
-            <span className={styles.refTooltipHint}>탭하면 참고 후기로 이동</span>
+            </>
+          ) : (
+            <>
+              <span className={styles.refTooltipTitle}>?? ?? {id}?</span>
+              <span className={styles.refTooltipHint}>??? ???? ??</span>
+            </>
           )}
         </span>
       )}

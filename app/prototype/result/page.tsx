@@ -247,9 +247,11 @@ function ResultInner() {
         highlight(el);
         return;
       }
-      if (attempt < 8) {
-        setTimeout(() => tryScroll(attempt + 1), 80);
+      if (attempt < 12) {
+        setTimeout(() => tryScroll(attempt + 1), 100);
+        return;
       }
+      document.getElementById('source-list')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     };
 
     setTimeout(() => tryScroll(), 50);

@@ -988,19 +988,16 @@
   box-shadow: 0 3px 12px rgba(0,0,0,.4);
 }
 
-/* Place cards strip — BELOW the map */
+/* Place cards strip — below the map */
 .placeStripWrap {
-  position: absolute;
-  bottom: 25px;
-  left: 14px;     /* ← 0 → 14px */
-  right: 14px;    /* ← 0 → 14px */
-  z-index: 10;
+  position: relative;
+  margin-top: 10px;
 }
 .placeStrip {
   display: flex;
   gap: 10px;
   overflow-x: auto;
-  padding: 0 14px;
+  padding: 14px 0 4px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
